@@ -1,5 +1,5 @@
 # CCGenerativeMusic
-EKG does button presses. PLAY MUSIC WITH YOUR MIND
+EEG does button presses. PLAY MUSIC WITH YOUR MIND
 
 
 To compile:
