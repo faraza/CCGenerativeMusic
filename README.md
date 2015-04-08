@@ -1,6 +1,9 @@
 # CCGenerativeMusic
 EEG does button presses. PLAY MUSIC WITH YOUR MIND
 
+NOTE: To run this, you will need the 4.3 second .wav files
+The ones that CC is using will not be included in this repository for copyright reasons
+
 
 To compile:
 
