@@ -39,6 +39,7 @@ public class MusicFromKeyPresses extends JFrame {
     
     int aPresses, bPresses, cPresses, dPresses, ePresses, fPresses, gPresses, hPresses, iPresses;
     Clip bass1, bass2, bass3, drum1, drum2, drum3, sound1, sound2, sound3;
+    int loopCount;
     
     MusicFromKeyPresses() {
         timer = new Timer();
@@ -52,6 +53,7 @@ public class MusicFromKeyPresses extends JFrame {
         setLocation(50, 100);
         setSize(1000, 700);
         setVisible(true);
+        loopCount = 0;
     }
     
     void loadClips(){
@@ -109,6 +111,68 @@ public class MusicFromKeyPresses extends JFrame {
         }
     }
     
+    void randomizeClips(){
+        //if duplicated clips ends up being a problem, we can deal with that with an arraylist or something
+        
+        try{
+
+            
+            //Change all the 5's to however many number of clips there are
+            int randomBassNum1 = (int)((5*(Math.random()))+1);
+            File bass1File = new File("bass"+randomBassNum1+".wav"); //bass1 through bass10
+            bass1.close();
+            bass1.open(AudioSystem.getAudioInputStream(bass1File));
+            
+            int randomBassNum2 = (int)((5*(Math.random()))+1);
+            File bass2File = new File("bass"+randomBassNum2+".wav"); //bass1 through bass10
+            bass2.close();
+            bass2.open(AudioSystem.getAudioInputStream(bass2File));
+            
+            int randomBassNum3 = (int)((5*(Math.random()))+1);
+            File bass3File = new File("bass"+randomBassNum3+".wav"); //bass1 through bass10
+            bass3.close();
+            bass3.open(AudioSystem.getAudioInputStream(bass3File));
+            
+            
+            int randomDrumNum1 = (int)((5*(Math.random()))+1);
+            File drum1File = new File("drum"+randomDrumNum1+".wav");
+            drum1.close();
+            drum1.open(AudioSystem.getAudioInputStream(drum1File));
+            
+            int randomDrumNum2 = (int)((5*(Math.random()))+1);
+            File drum2File = new File("drum"+randomDrumNum2+".wav");
+            drum2.close();
+            drum2.open(AudioSystem.getAudioInputStream(drum2File));
+            
+            int randomDrumNum3 = (int)((5*(Math.random()))+1);
+            File drum3File = new File("drum"+randomDrumNum3+".wav");
+            drum3.close();
+            drum3.open(AudioSystem.getAudioInputStream(drum3File));
+            
+            int randomSoundNum1 = (int)((5*(Math.random()))+1);
+            File sound1File = new File("sound"+randomSoundNum1+".wav");
+            sound1.close();
+            sound1.open(AudioSystem.getAudioInputStream(sound1File));
+            
+            int randomSoundNum2 = (int)((5*(Math.random()))+1);
+            File sound2File = new File("sound"+randomSoundNum2+".wav");
+            sound2.close();
+            sound2.open(AudioSystem.getAudioInputStream(sound2File));
+            
+            int randomSoundNum3 = (int)((5*(Math.random()))+1);
+            File sound3File = new File("sound"+randomSoundNum3+".wav");
+            sound3.close();
+            sound3.open(AudioSystem.getAudioInputStream(sound3File));
+            System.out.print("next set");
+            
+            
+        }
+        catch(Exception e){
+            System.out.print("error randomizing audio files");
+        }
+        
+    }
+    
     void resetPresses(){
         aPresses = 0;
         bPresses = 0;
@@ -162,6 +226,11 @@ public class MusicFromKeyPresses extends JFrame {
 
     class updateMusic extends TimerTask {
         public void run() {
+            loopCount++;
+            if(loopCount%6 == 0) //TO CHANGE randomization TIME INTERVAL: change this number. IT will change every 5 seconds * whatever this number is
+                randomizeClips();
+            
+            
             drum1.setFramePosition(0);
             drum2.setFramePosition(0);
             drum3.setFramePosition(0);
