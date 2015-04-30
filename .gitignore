@@ -1,10 +1,11 @@
-*.class
 
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
-# Package Files #
-*.jar
-*.war
-*.ear
-*.wav
+
+
+std::set<PuzzleBoard*>::iterator puzit;
+
+for(puzit = closedSet.begin(); puzit!=closedSet.end(); puzit++){
+
+	if((*puzIt)->board == currentBoard)
+		cout << “Wtf”;
+}
